@@ -119,6 +119,7 @@
 
     <script language="javascript">
       function refreshfilelist(){
+        $.support.cors = true;
       $.getJSON("http://hdfsm.qmcr.me:50070/webhdfs/v1/?op=LISTSTATUS", function(data) {
           alert(data);
       });
