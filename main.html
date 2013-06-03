@@ -83,7 +83,7 @@
             <button class="btn btn btn-success" onclick="refreshfilelist();"><i class="icon-refresh icon-white"></i> 刷新列表</button>
             <button class="btn btn btn-primary"><i class="icon-upload icon-white"></i> 上传文件</button>
             <hr>
-            <table class="table table-hover">
+            <table id="filelist" class="table table-hover">
               <thead>
                 <tr>
                   <th>文件名</th>
@@ -91,9 +91,6 @@
                   <th>操作</th>
                 </tr>
               </thead>
-              <tr>
-                <td>test</td><td>test</td><td>test</td>
-              </tr>
             </table>
           </div><!--/row-->
         </div><!--/span-->
@@ -113,17 +110,37 @@
 
 <!-- jQuery -->
 <script src="http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.min.js"></script>
-
-<!-- jQuery rest -->
-<script src="http://jpillora.com/jquery.rest/dist/jquery.rest.min.js"></script>
-
+<script src="http://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"></script>
+  <script type="text/javascript">
+var markup = "<tr><td>${pathSuffix}</td><td>${accessTime}</td><td><button class='btn btn-danger'><i class='icon-remove icon-white'></i> 删除文件</button></td></tr>";
+$.template( "fileTemplate", markup );
+    </script>
     <script language="javascript">
       function refreshfilelist(){
-        $.support.cors = true;
-      $.getJSON("http://hdfsm.qmcr.me:50070/webhdfs/v1/?op=LISTSTATUS", function(data) {
-          alert(data);
-      });
+     //   $.support.cors = true;
+     // $.getJSON("http://hdfsm.qmcr.me:50070/webhdfs/v1/?op=LISTSTATUS", function(data) {
+     //     alert(data);
+     // });
+        window.parent.frames[0].postMessage("hello", 'http://hdfsm.qmcr.me:50070');
       }
     </script>
+<script type="text/javascript">
+  window.onload = function() {
+    var onmessage = function(e) {
+    console.log(e.data["FileStatuses"]["FileStatus"]);
+  $.tmpl( "fileTemplate", e.data["FileStatuses"]["FileStatus"] )
+      .appendTo( "#filelist" );
+    };
+	//监听postMessage消息事件
+    if (typeof window.addEventListener != 'undefined') {
+      window.addEventListener('message', onmessage, false);
+    } else if (typeof window.attachEvent != 'undefined') {
+      window.attachEvent('onmessage', onmessage);
+    }
+
+  };
+
+</script>
+     <iframe id="iframe" src="http://hdfsm.qmcr.me:50070/static/cros/xhr.html" name="iframe" width="0" height="0" frameborder="0"></iframe> 
   </body>
 </html>
