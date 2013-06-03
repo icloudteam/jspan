@@ -92,6 +92,8 @@
                   <th>操作</th>
                 </tr>
               </thead>
+              <tbody>
+              </tbody>
             </table>
           </div><!--/row-->
         </div><!--/span-->
@@ -176,6 +178,9 @@ $.template( "fileTemplate", markup );
   window.onload = function() {
     var onmessage = function(e) {
     console.log(e.data);
+  if (e.data["FileStatuses"]){
+    $("#filelist tbody").remove();
+  }
     console.log(e.data["FileStatuses"]["FileStatus"]);
   $.tmpl( "fileTemplate", e.data["FileStatuses"]["FileStatus"] )
       .appendTo( "#filelist" );
