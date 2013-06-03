@@ -10,6 +10,7 @@
 
     <!-- Le styles -->
     <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap-modal.css" rel="stylesheet"> 
     <style type="text/css">
       body {
         padding-top: 60px;
@@ -81,7 +82,7 @@
         <div class="span9">
           <div class="row-fluid">
             <button class="btn btn btn-success" onclick="refreshfilelist();"><i class="icon-refresh icon-white"></i> 刷新列表</button>
-            <button class="btn btn btn-primary"><i class="icon-upload icon-white"></i> 上传文件</button>
+            <button class="btn btn btn-primary" onclick="create();"><i class="icon-upload icon-white"></i> 上传文件</button>
             <hr>
             <table id="filelist" class="table table-hover">
               <thead>
@@ -111,22 +112,70 @@
 <!-- jQuery -->
 <script src="http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.min.js"></script>
 <script src="http://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"></script>
+    <script src="js/bootstrap-modalmanager.js"></script>
+    <script src="js/bootstrap-modal.js"></script>
   <script type="text/javascript">
-var markup = "<tr><td>${pathSuffix}</td><td>${accessTime}</td><td><button class='btn btn-danger'><i class='icon-remove icon-white'></i> 删除文件</button></td></tr>";
+var markup = "<tr><td>${pathSuffix}</td><td>${accessTime}</td><td><button onlick='ldelete();' class='btn btn-danger'><i class='icon-remove icon-white'></i> 删除文件</button></td></tr>";
 $.template( "fileTemplate", markup );
+
+
+  $(function(){
+
+    $.fn.modalmanager.defaults.resize = true;
+
+    $('[data-source]').each(function(){
+      var $this = $(this),
+        $source = $($this.data('source'));
+
+      var text = [];
+      $source.each(function(){
+        var $s = $(this);
+        if ($s.attr('type') == 'text/javascript'){
+          text.push($s.html().replace(/(\n)*/, ''));
+        } else {
+          text.push($s.clone().wrap('<div>').parent().html());
+        }
+      });
+      
+      $this.text(text.join('\n\n').replace(/\t/g, '    '));
+    });
+
+    prettyPrint();
+  });
+
     </script>
     <script language="javascript">
       function refreshfilelist(){
-     //   $.support.cors = true;
-     // $.getJSON("http://hdfsm.qmcr.me:50070/webhdfs/v1/?op=LISTSTATUS", function(data) {
-     //     alert(data);
-     // });
-        window.parent.frames[0].postMessage("hello", 'http://hdfsm.qmcr.me:50070');
+        window.parent.frames[0].postMessage("LISTSTATUS", 'http://hdfsm.qmcr.me:50070');
+      }
+      function ldelete(){
+        window.parent.frames[0].postMessage("DELETE", 'http://hdfsm.qmcr.me:50070');
+      }
+      function create(){
+          var tmpl = [
+    // tabindex is required for focus
+    '<div class="modal hide fade" tabindex="-1" data-width="760">',
+      '<div class="modal-header">',
+        '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>',
+        '<h3>将文件拖拽至空白区域</h3>', 
+      '</div>',
+      '<div class="modal-body">',
+        '<iframe id="iframe" src="http://hdfsm.qmcr.me:9999" width="100%" height="350px" name="iframe" frameborder="0"></iframe>',
+      '</div>',
+      '<div class="modal-footer">',
+        '<a href="#" data-dismiss="modal" class="btn">Close</a>',
+        '<a href="#" class="btn btn-primary">Save changes</a>',
+      '</div>',
+    '</div>'
+  ].join('');
+  
+  $(tmpl).modal();
       }
     </script>
 <script type="text/javascript">
   window.onload = function() {
     var onmessage = function(e) {
+    console.log(e.data);
     console.log(e.data["FileStatuses"]["FileStatus"]);
   $.tmpl( "fileTemplate", e.data["FileStatuses"]["FileStatus"] )
       .appendTo( "#filelist" );
