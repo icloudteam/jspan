@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-
+<script src=http://tjs.sjs.sinajs.cn/open/api/js/wb.js?appkey=2033372773 type="text/javascript" charset="utf-8"></script>
     <!-- Le styles -->
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/bootstrap-modal.css" rel="stylesheet"> 
@@ -57,12 +57,13 @@
           <a class="brand" href="#">iCloud Pan</a>
           <div class="nav-collapse collapse">
             <p class="navbar-text pull-right">
-              Logged in as <a href="#" class="navbar-link">Username</a>
+              Logged in as <a href="#" class="navbar-link">iCloud</a>
             </p>
             <ul class="nav">
               <li class="active"><a href="#">Home</a></li>
-              <li><a href="#about">About</a></li>
-              <li><a href="#contact">Contact</a></li>
+              <li><a href="#about" onclick="about();">About</a></li>
+              <li><a href="#contact" onclick="contact();">Contact</a></li>
+              <li><a href="#share" onclick="share();">Share</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -117,7 +118,23 @@
     <script src="js/bootstrap-modalmanager.js"></script>
     <script src="js/bootstrap-modal.js"></script>
   <script type="text/javascript">
-var markup = "<tr><td>${pathSuffix}</td><td>${accessTime}</td><td><button onlick='ldelete();' class='btn btn-danger'><i class='icon-remove icon-white'></i> 删除文件</button></td></tr>";
+    WB2.anyWhere(function(W){
+    W.widget.publish({
+        action:"publish",
+        type:"web",
+        language:"zh_cn",
+        button_type:"red",
+        button_size:"middle",
+        button_text:"iCloud Pan",
+        uid:"1762343235",
+        default_text:"well",
+        tag:"iCloud Pan",
+        refer:"y",
+        appkey:"3he9pz",
+        id: "wb_publisher"
+    });
+});
+var markup = "<tr><td><a href='http://hdfsm.qmcr.me:50075/webhdfs/v1/${pathSuffix}?op=OPEN' target='_blank'>${pathSuffix}</a></td><td>${accessTime}</td><td><button filepath='${pathSuffix}' class='btn btn-danger del'><i class='icon-remove icon-white'></i> 删除文件</button></td></tr>";
 $.template( "fileTemplate", markup );
 
 
@@ -142,7 +159,6 @@ $.template( "fileTemplate", markup );
       $this.text(text.join('\n\n').replace(/\t/g, '    '));
     });
 
-    prettyPrint();
   });
 
     </script>
@@ -150,8 +166,71 @@ $.template( "fileTemplate", markup );
       function refreshfilelist(){
         window.parent.frames[0].postMessage("LISTSTATUS", 'http://hdfsm.qmcr.me:50070');
       }
-      function ldelete(){
-        window.parent.frames[0].postMessage("DELETE", 'http://hdfsm.qmcr.me:50070');
+
+      function share(){
+
+      }
+
+
+      function about(){
+          var tmpl = [
+    // tabindex is required for focus
+    '<div class="modal hide fade" tabindex="-1" data-width="760">',
+      '<div class="modal-header">',
+        '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>',
+        '<h3>About</h3>',
+      '</div>',
+      '<div class="modal-body">',
+        '<h2>We are iCloud team!</h2>',
+      '</div>',
+      '<div class="modal-footer">',
+        '<a href="#" data-dismiss="modal" class="btn  btn-primary">确定</a>',
+      '</div>',
+    '</div>'
+  ].join('');
+  $(tmpl).modal();
+      }
+
+      function contact(){
+          var tmpl = [
+    // tabindex is required for focus
+    '<div class="modal hide fade" tabindex="-1" data-width="760">',
+      '<div class="modal-header">',
+        '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>',
+        '<h3>Contact</h3>',
+      '</div>',
+      '<div class="modal-body">',
+        '<h2>我们只接待高富帅和白富美，非诚勿扰!</h2>',
+      '</div>',
+      '<div class="modal-footer">',
+        '<a href="#" data-dismiss="modal" class="btn  btn-primary">确定</a>',
+      '</div>',
+    '</div>'
+  ].join('');
+  $(tmpl).modal();
+      }
+
+      function ldelete(filepath){
+          var tmpl = [
+    // tabindex is required for focus
+    '<div class="modal hide fade" tabindex="-1" data-width="760">',
+      '<div class="modal-header">',
+        '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>',
+        '<h3>警告</h3>', 
+      '</div>',
+      '<div class="modal-body">',
+        '您是否确定删除文件[ ',filepath,' ]?',
+      '</div>',
+      '<div class="modal-footer">',
+        '<a href="#" onclick="" data-dismiss="modal" class="btn">取消</a>',
+        '<a href="#" onclick="calldelete(\'',filepath,'\');" data-dismiss="modal" class="btn  btn-primary">确定</a>',
+      '</div>',
+    '</div>'
+  ].join('');
+  $(tmpl).modal();
+      }
+      function calldelete(filepath){
+        window.parent.frames[1].postMessage(filepath, 'http://hdfsm.qmcr.me:50070'); 
       }
       function create(){
           var tmpl = [
@@ -162,15 +241,13 @@ $.template( "fileTemplate", markup );
         '<h3>将文件拖拽至空白区域</h3>', 
       '</div>',
       '<div class="modal-body">',
-        '<iframe id="iframe" src="http://hdfsm.qmcr.me:9999" width="100%" height="350px" name="iframe" frameborder="0"></iframe>',
+        '<iframe id="upload" src="http://hdfsm.qmcr.me:9999" width="100%" height="350px" name="upload" frameborder="0"></iframe>',
       '</div>',
       '<div class="modal-footer">',
-        '<a href="#" data-dismiss="modal" class="btn">Close</a>',
-        '<a href="#" class="btn btn-primary">Save changes</a>',
+        '<a href="#" onclick="refreshfilelist();" data-dismiss="modal" class="btn">Close</a>',
       '</div>',
     '</div>'
   ].join('');
-  
   $(tmpl).modal();
       }
     </script>
@@ -178,12 +255,40 @@ $.template( "fileTemplate", markup );
   window.onload = function() {
     var onmessage = function(e) {
     console.log(e.data);
+  if(e.data["boolean"]){
+
+          var tmpl = [
+    // tabindex is required for focus
+    '<div class="modal hide fade" tabindex="-1" data-width="760">',
+      '<div class="modal-header">',
+        '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>',
+        '<h3>提示</h3>',
+      '</div>',
+      '<div class="modal-body">',
+        '删除成功！',
+      '</div>',
+      '<div class="modal-footer">',
+        '<a href="#" data-dismiss="modal" class="btn  btn-primary">确定</a>',
+      '</div>',
+    '</div>'
+  ].join('');
+  $(tmpl).modal();
+  window.parent.frames[0].postMessage("LISTSTATUS", 'http://hdfsm.qmcr.me:50070');
+  }
   if (e.data["FileStatuses"]){
     $("#filelist tbody").remove();
-  }
-    console.log(e.data["FileStatuses"]["FileStatus"]);
-  $.tmpl( "fileTemplate", e.data["FileStatuses"]["FileStatus"] )
+  var files=e.data["FileStatuses"]["FileStatus"];
+    files = jQuery.grep(files, function(o) {
+  return o.type == "FILE";
+});
+  $.each(files,function(i,o){
+      var d=new Date(o.accessTime);
+      files[i].accessTime=d.toLocaleString();
+      });
+  $.tmpl( "fileTemplate", files )
       .appendTo( "#filelist" );
+  $(".del").each(function(e,o){$(o).click(function(){ldelete($(o).attr('filepath'));});});
+  }
     };
 	//监听postMessage消息事件
     if (typeof window.addEventListener != 'undefined') {
@@ -195,6 +300,7 @@ $.template( "fileTemplate", markup );
   };
 
 </script>
-     <iframe id="iframe" src="http://hdfsm.qmcr.me:50070/static/cros/xhr.html" name="iframe" width="0" height="0" frameborder="0"></iframe> 
+     <iframe id="xhr" src="http://hdfsm.qmcr.me:50070/static/cros/xhr.html" name="xhr" width="0" height="0" frameborder="0"></iframe> 
+     <iframe id="del" src="http://hdfsm.qmcr.me:50070/static/cros/del.html" name="del" width="0" height="0" frameborder="0"></iframe> 
   </body>
 </html>
