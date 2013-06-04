@@ -2,16 +2,15 @@
 /**
  * 微信二维码登陆测试
  */
-    include "snoopy.class.php";
-	include("wechatauth.class.php");
+	include "wechatauth.class.php";
 	session_start();
 	function logdebug($text){
-		file_put_contents('logwechat.txt',$text."\n",FILE_APPEND);		
+		file_put_contents('data/logwechat.txt',$text."\n",FILE_APPEND);		
 	};
 	$sid  = session_id();
 	$options = array(
 		'account'=>$sid,
-		'datapath'=>'cookiecode_',
+		'datapath'=>'data/cookiecode_',
 			'debug'=>true,
 			'logcallback'=>'logdebug'	
 	); 
