@@ -174,7 +174,7 @@
         '<h3>使用微信扫一扫登录</h3>',
       '</div>',
       '<div class="modal-body">',
-        '<center><img src="<?php echo $qrimg;?>" /></center>',
+        '<center><img height="299px" src="<?php echo $qrimg;?>" /></center>',
       '</div>',
       '<div class="modal-footer">',
         '<a href="#" data-dismiss="modal" class="btn  btn-primary">取消</a>',
