@@ -48,6 +48,7 @@
 <script src="http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.min.js"></script>
     <!-- Le styles -->
     <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap-modal.css" rel="stylesheet"> 
     <style type="text/css">
       body {
         padding-top: 20px;
@@ -99,49 +100,68 @@
                     <link rel="apple-touch-icon-precomposed" href="ico/apple-touch-icon-57-precomposed.png">
                                    <link rel="shortcut icon" href="ico/favicon.png">
 </head>
-<body>
+  <body>
+    <div class="container-narrow">
+      <div class="masthead">
+        <ul class="nav nav-pills pull-right">
+
+        </ul>
+        <h3 class="muted">iCloud Pan</h3>
+      </div>
+      <hr>
+      <div class="jumbotron">
+        <h1>爱云网盘!<br>iCloud Pan!<br>Super awesome!</h1>
+        <p class="lead">产品不是一个人的战役，即使是天才的乔布斯，他也需要一个团队。只有最好的团队才能做好顶级的产品。iCloud团队，你值得信赖的团队！</p>
+        <a class="btn btn-large btn-success" href="#" onclick="about();">立即使用</a>
+      </div>
+      <hr>
+      <div class="span9">
+        <div class="span2">
+          <h2>安全</h2>
+          <p>采用分布式存储技术，同时利用Iaas平台，确保您的确保数据安全。</p>
+        </div>
+        <div class="span2">
+          <h2>简单</h2>
+          <p>无需注册，无需键盘，使用手机微信二维码，扫一扫就登录。</p>
+       </div>
+        <div class="span2">
+          <h2>快捷</h2>
+          <p>拖拽你的文件到界面即可完成上传操作，使用二维码将你的文件分享给好友。</p>
+        </div>
+      </div>
+      <hr>
+      <div class="footer">
+        <br>
+        <center><p>&copy; iCloud 2013</p></center>
+      </div>
+
+    </div> <!-- /container -->
+    <script src="js/bootstrap-modalmanager.js"></script>
+    <script src="js/bootstrap-modal.js"></script>
+    <script language="javascript">
+      function about(){
+          var tmpl = [
+    // tabindex is required for focus
+    '<div class="modal hide fade" tabindex="-1" data-width="760">',
+      '<div class="modal-header">',
+        '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>',
+        '<h3>About</h3>',
+      '</div>',
+      '<div class="modal-body">',
+        '<h2>We are iCloud team!</h2>',
+      '</div>',
+      '<div class="modal-footer">',
+        '<a href="#" data-dismiss="modal" class="btn  btn-primary">确定</a>',
+      '</div>',
+    '</div>'
+  ].join('');
+  $(tmpl).modal();
+      }
+    </script>
+  </body>
+</html>
+
 <h2>使用微信扫一扫登录</h2>
 <div id="content">
-    <?php echo  $wechat->get_login_code();?>
 <img src="<?php echo $qrimg;?>" />
 </div>
-<script type="text/javascript">
-var ajaxlock = false;
-var ajaxhandle;
-function synclogin(){
-	if (!ajaxlock) {
-		ajaxlock = true;
-		$.post(location.href,{code:'<?php echo $logincode;?>'},function(json){
-			//console.log(json);
-			if (json.status) {
-				console.log(json.status);
-				if (json.status==200) {
-					var nick,uid,username,sex,avatar;
-					if (json.info && json.info.User){
-						uid = json.info.User.Uin;
-						nick = json.info.User.NickName;
-						username = json.info.User.UserName;
-						sex = json.info.User.Sex;
-						avatar = json.info.User.HeadImgUrl;
-						$('#content').html('<h2>用户信息</h2><ul><li><b>Uid:</b>'+uid
-								+'</li><li><b>Nick:</b>'+nick
-								+'</li><li><b>username:</b>'+username
-								+'</li><li><b>sex:</b>'+(sex==1?'男':'女')
-								+'</li><li><b>avatar:</b>'+avatar
-								+'</li></ul>');
-					}
-					alert('login success, welcome '+nick);
-
-					clearInterval(ajaxhandle);
-				}
-			}
-			ajaxlock = false;
-		},'json');
-	}
-}
-$(function(){
-	ajaxhandle = setInterval("synclogin()",2000);
-});
-</script>
-</body>
-</html>
