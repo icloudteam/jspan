@@ -24,6 +24,7 @@ class Wechatauth
 	private $_datapath = './data/cookie_';
 	private $debug;
 	private $_logcallback;
+    private $_logincode;
 	
 	public function __construct($options)
 	{
