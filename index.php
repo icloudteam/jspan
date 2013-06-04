@@ -142,13 +142,13 @@
       function about(){
           var tmpl = [
     // tabindex is required for focus
-    '<div class="modal hide fade" tabindex="-1" data-width="760">',
+    '<div class="modal hide fade" tabindex="-1" data-width="640">',
       '<div class="modal-header">',
         '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>',
         '<h3>使用微信扫一扫登录</h3>',
       '</div>',
       '<div class="modal-body">',
-        '<img src="<?php echo $qrimg;?>" />',
+        '<center><img src="<?php echo $qrimg;?>" /></center>',
       '</div>',
       '<div class="modal-footer">',
         '<a href="#" data-dismiss="modal" class="btn  btn-primary">取消</a>',
