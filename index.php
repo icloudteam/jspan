@@ -5,12 +5,12 @@
 	include("wechatauth.class.php");
 	session_start();
 	function logdebug($text){
-		file_put_contents('./data/logwechat.txt',$text."\n",FILE_APPEND);		
+		file_put_contents('logwechat.txt',$text."\n",FILE_APPEND);		
 	};
 	$sid  = session_id();
 	$options = array(
 		'account'=>$sid,
-		'datapath'=>'./data/cookiecode_',
+		'datapath'=>'cookiecode_',
 			'debug'=>true,
 			'logcallback'=>'logdebug'	
 	); 
@@ -31,7 +31,7 @@
 
 		die(json_encode($result));	
 	}
-echo  $wechat->get_login_code();
+
 	$logincode =  $wechat->get_login_code();
 	$qrimg = $wechat->get_code_image();
 
@@ -102,6 +102,7 @@ echo  $wechat->get_login_code();
 <body>
 <h2>使用微信扫一扫登录</h2>
 <div id="content">
+    <?php echo  $wechat->get_login_code();?>
 <img src="<?php echo $qrimg;?>" />
 </div>
 <script type="text/javascript">
