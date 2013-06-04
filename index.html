@@ -97,8 +97,14 @@
       </div>
 
     </div> <!-- /container -->
-
-
 <script src="http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.min.js"></script>
+  <script type="text/javascript">
+    var codeurl="https://login.weixin.qq.com/jslogin?appid=wx782c26e4c19acffb&redirect_uri=https%3A%2F%2Fwx.qq.com%2Fcgi-bin%2Fmmwebwx-bin%2Fwebwxnewloginpage&fun=new&lang=zh_CN&_="+Math.floor((Math.random()*10000000)+1);
+    $.get(
+        codeurl,
+        function(data){console.log(data);}
+    );
+    console.log(codeurl);
+  </script>
   </body>
 </html>

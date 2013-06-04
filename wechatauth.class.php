@@ -74,9 +74,9 @@ class Wechatauth
 		if ($this->_logincode) return $this->_logincode;
 		$t = time().strval(mt_rand(100,999));
 		$codeurl = 'https://login.weixin.qq.com/jslogin?appid=wx782c26e4c19acffb&redirect_uri=https%3A%2F%2Fwx.qq.com%2Fcgi-bin%2Fmmwebwx-bin%2Fwebwxnewloginpage&fun=new&lang=zh_CN&_='.$t;
-		$send_snoopy = new Snoopy; 
-		$send_snoopy->fetch($codeurl);
-		$result = $send_snoopy->results;
+		//$send_snoopy = new Snoopy; 
+		//$send_snoopy->fetch($codeurl);
+		$result = file_get_contents($codeurl);//$send_snoopy->results;
 		if ($result) {
 			preg_match("/window.QRLogin.uuid\s+=\s+\"([^\"]+)\"/",$result,$matches);
 			if(count($matches)>1) {
