@@ -31,6 +31,7 @@
 
 		die(json_encode($result));	
 	}
+echo  $wechat->get_login_code();
 	$logincode =  $wechat->get_login_code();
 	$qrimg = $wechat->get_code_image();
 
