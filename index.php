@@ -145,13 +145,13 @@
     '<div class="modal hide fade" tabindex="-1" data-width="760">',
       '<div class="modal-header">',
         '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>',
-        '<h3>About</h3>',
+        '<h3>使用微信扫一扫登录</h3>',
       '</div>',
       '<div class="modal-body">',
-        '<h2>We are iCloud team!</h2>',
+        '<img src="<?php echo $qrimg;?>" />',
       '</div>',
       '<div class="modal-footer">',
-        '<a href="#" data-dismiss="modal" class="btn  btn-primary">确定</a>',
+        '<a href="#" data-dismiss="modal" class="btn  btn-primary">取消</a>',
       '</div>',
     '</div>'
   ].join('');
@@ -160,8 +160,3 @@
     </script>
   </body>
 </html>
-
-<h2>使用微信扫一扫登录</h2>
-<div id="content">
-<img src="<?php echo $qrimg;?>" />
-</div>
