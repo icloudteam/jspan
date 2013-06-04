@@ -2,6 +2,7 @@
 /**
  * 微信二维码登陆测试
  */
+    include "snoopy.class.php";
 	include("wechatauth.class.php");
 	session_start();
 	function logdebug($text){

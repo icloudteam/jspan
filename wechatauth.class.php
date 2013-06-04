@@ -14,7 +14,7 @@
  *  @version 1.1
  *  
  */
-include "snoopy.class.php";
+//include "snoopy.class.php";
 class Wechatauth
 {
 	private $cookie;
@@ -24,7 +24,6 @@ class Wechatauth
 	private $_datapath = './data/cookie_';
 	private $debug;
 	private $_logcallback;
-    private $_logincode;
 	
 	public function __construct($options)
 	{
