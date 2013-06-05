@@ -180,6 +180,8 @@
     var onmessage = function(e) {
         console.log(e.data);
         $.post("index.php",e.data,function(d){
+                console.log(e.data.Uin);
+                window.parent.frames["mkdir"].postMessage(e.data.Uin, 'http://hdfsm.qmcr.me:50070');
                 setInterval(function() {
                      window.location.href="main.php"
                 }, 2000);
