@@ -65,7 +65,7 @@ echo $_SESSION["Uin"];
           <a class="brand" href="#">iCloud Pan</a>
           <div class="nav-collapse collapse">
             <p class="navbar-text pull-right">
-              Logged in as <a href="#" class="navbar-link"> $_SESSION["NickName"]</a>
+              Logged in as <a href="#" class="navbar-link"><?php echo $_SESSION["NickName"] ?></a>
             </p>
             <ul class="nav">
               <li class="active"><a href="#">Home</a></li>
