@@ -180,7 +180,9 @@
     var onmessage = function(e) {
         console.log(e.data);
         $.post("index.php",e.data,function(d){
-            console.log(d);window.location.href="main.php"
+                setInterval(function() {
+                     window.location.href="main.php"
+                }, 2000);
         });
     };
 	//监听postMessage消息事件
