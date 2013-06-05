@@ -123,6 +123,8 @@ if(!isset($_SESSION["Uin"])){
 <script src="http://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"></script>
     <script src="js/bootstrap-modalmanager.js"></script>
     <script src="js/bootstrap-modal.js"></script>
+    <script src="js/jquery.qrcode.js"></script>
+    <script src="js/qrcode.js"></script>
   <script type="text/javascript">
 var markup = "<tr><td><a href='http://hdfsm.qmcr.me:50075/webhdfs/v1/${pathSuffix}?op=OPEN' target='_blank'>${pathSuffix}</a></td><td>${accessTime}</td><td><button filepath='${pathSuffix}' class='btn btn-danger del'><i class='icon-remove icon-white'></i> 删除</button> <button filepath='${pathSuffix}' class='btn btn-info share'><i class='icon-globe icon-white'></i> 分享</button></td></tr>";
 $.template( "fileTemplate", markup );
@@ -171,6 +173,7 @@ $.template( "fileTemplate", markup );
       '</div>',
       '<div class="modal-body">',
         '<h2>well well well!</h2>',
+    '<div id="qrcode"></div>',
       '</div>',
       '<div class="modal-footer">',
         '<a href="#" data-dismiss="modal" class="btn  btn-primary">关闭</a>',
@@ -178,6 +181,7 @@ $.template( "fileTemplate", markup );
     '</div>'
   ].join('');
   $(tmpl).modal();
+  $("#qrcode").qrcode();
       }
 
 
