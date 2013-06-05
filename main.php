@@ -69,7 +69,6 @@ if(!isset($_SESSION["Uin"])){
               <li class="active"><a href="#">Home</a></li>
               <li><a href="#about" onclick="about();">About</a></li>
               <li><a href="#contact" onclick="contact();">Contact</a></li>
-              <li><a href="#share" onclick="share();">Share</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
