@@ -171,9 +171,9 @@ $.template( "fileTemplate", markup );
         '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>',
         '<h3>分享文件</h3>',
       '</div>',
-      '<div class="modal-body">',
-    '<h2>http://hdfsm.qmcr.me:50075/webhdfs/v1/$',filepath,'?op=OPEN</h2>',
+      '<div class="modal-body center">',
     '<div id="qrcode"></div>',
+        '<h4>http://hdfsm.qmcr.me:50075/webhdfs/v1/',filepath,'?op=OPEN</h2>',
       '</div>',
       '<div class="modal-footer">',
         '<a href="#" data-dismiss="modal" class="btn  btn-primary">关闭</a>',
@@ -181,7 +181,7 @@ $.template( "fileTemplate", markup );
     '</div>'
   ].join('');
   $(tmpl).modal();
-  $("#qrcode").qrcode({	color: '#403D40',text: 'http://hdfsm.qmcr.me:50075/webhdfs/v1/$'+filepath+'?op=OPEN'});
+  $("#qrcode").qrcode({	color: '#403D40',text: 'http://hdfsm.qmcr.me:50075/webhdfs/v1/'+filepath+'?op=OPEN'});
       }
 
 
