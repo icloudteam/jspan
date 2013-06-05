@@ -124,7 +124,7 @@ if(!isset($_SESSION["Uin"])){
     <script src="js/bootstrap-modalmanager.js"></script>
     <script src="js/bootstrap-modal.js"></script>
   <script type="text/javascript">
-var markup = "<tr><td><a href='http://hdfsm.qmcr.me:50075/webhdfs/v1/${pathSuffix}?op=OPEN' target='_blank'>${pathSuffix}</a></td><td>${accessTime}</td><td><button filepath='${pathSuffix}' class='btn btn-danger del'><i class='icon-remove icon-white'></i> 删除文件</button><button filepath='${pathSuffix}' class='btn btn-info share'><i class='icon-globe icon-white'></i> 分享</button></td></tr>";
+var markup = "<tr><td><a href='http://hdfsm.qmcr.me:50075/webhdfs/v1/${pathSuffix}?op=OPEN' target='_blank'>${pathSuffix}</a></td><td>${accessTime}</td><td><button filepath='${pathSuffix}' class='btn btn-danger del'><i class='icon-remove icon-white'></i> 删除</button> <button filepath='${pathSuffix}' class='btn btn-info share'><i class='icon-globe icon-white'></i> 分享</button></td></tr>";
 $.template( "fileTemplate", markup );
 
 
