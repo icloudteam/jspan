@@ -174,7 +174,7 @@
         '<h3>使用微信扫一扫登录</h3>',
       '</div>',
       '<div class="modal-body">',
-        '<center><iframe id="ws" src="http://iweixin.ruijie.com.cn/ws.php" name="ws" width="305" height="305" frameborder="0"></iframe></center>',
+        '<center><iframe id="ws" src="http://iweixin.ruijie.com.cn/ws.php" name="ws" width="325" height="325" frameborder="0"></iframe></center>',
       '</div>',
       '<div class="modal-footer">',
         '<a href="#" data-dismiss="modal" class="btn  btn-primary">取消</a>',
