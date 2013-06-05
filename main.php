@@ -154,7 +154,7 @@ $.template( "fileTemplate", markup );
     </script>
     <script language="javascript">
       function refreshfilelist(){
-        window.parent.frames[0].postMessage("LISTSTATUS", 'http://hdfsm.qmcr.me:50070');
+        window.parent.frames["xhr"].postMessage("LISTSTATUS", 'http://hdfsm.qmcr.me:50070');
       }
 
       function mkuserdir(){
