@@ -69,7 +69,7 @@ if(!isset($_SESSION["Uin"])){
               <li class="active"><a href="#">Home</a></li>
               <li><a href="#about" onclick="about();">About</a></li>
               <li><a href="#contact" onclick="contact();">Contact</a></li>
-              <li><a href="#share" onclick="mkuserdir();">Share</a></li>
+              <li><a href="#share" onclick="share();">Share</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -124,7 +124,7 @@ if(!isset($_SESSION["Uin"])){
     <script src="js/bootstrap-modalmanager.js"></script>
     <script src="js/bootstrap-modal.js"></script>
   <script type="text/javascript">
-var markup = "<tr><td><a href='http://hdfsm.qmcr.me:50075/webhdfs/v1/${pathSuffix}?op=OPEN' target='_blank'>${pathSuffix}</a></td><td>${accessTime}</td><td><button filepath='${pathSuffix}' class='btn btn-danger del'><i class='icon-remove icon-white'></i> 删除文件</button></td></tr>";
+var markup = "<tr><td><a href='http://hdfsm.qmcr.me:50075/webhdfs/v1/${pathSuffix}?op=OPEN' target='_blank'>${pathSuffix}</a></td><td>${accessTime}</td><td><button filepath='${pathSuffix}' class='btn btn-danger del'><i class='icon-remove icon-white'></i> 删除文件</button><button filepath='${pathSuffix}' class='btn btn-info share'><i class='icon-globe icon-white'></i> 分享</button></td></tr>";
 $.template( "fileTemplate", markup );
 
 
@@ -162,7 +162,22 @@ $.template( "fileTemplate", markup );
       }
 
       function share(){
-
+          var tmpl = [
+    // tabindex is required for focus
+    '<div class="modal hide fade" tabindex="-1" data-width="760">',
+      '<div class="modal-header">',
+        '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>',
+        '<h3>分享文件</h3>',
+      '</div>',
+      '<div class="modal-body">',
+        '<h2>well well well!</h2>',
+      '</div>',
+      '<div class="modal-footer">',
+        '<a href="#" data-dismiss="modal" class="btn  btn-primary">关闭</a>',
+      '</div>',
+    '</div>'
+  ].join('');
+  $(tmpl).modal();
       }
 
 
