@@ -16,24 +16,12 @@
 	); 
 	$wechat = new Wechatauth($options);
 
-	if (isset($_POST['code'])) {
-		$logincode = $_POST['code'];
-		$vres = $wechat->set_login_code($logincode)->verify_code();
-		if ($vres===false) {
-			$result = array('status'=>0);
-		} else {
-			$result = array('status'=>$vres);
-			if ($vres==200) {
-				$result['info'] = $wechat->get_login_info();
-				$result['cookie'] = $wechat->get_login_cookie(true);
-			}
-		}
+	if (isset($_POST['Uin'])) {
 
-		die(json_encode($result));	
+
+		die(json_encode($_POST['Uin']));	
 	}
 
-	$logincode =  $wechat->get_login_code();
-	$qrimg = $wechat->get_code_image();
 
 ?>
 
@@ -189,6 +177,7 @@
   window.onload = function() {
     var onmessage = function(e) {
     console.log(e.data);
+    $.post("index.php",e.data,function(d){console.log(d);});
     };
 	//监听postMessage消息事件
     if (typeof window.addEventListener != 'undefined') {
