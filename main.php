@@ -158,7 +158,7 @@ $.template( "fileTemplate", markup );
       }
 
       function mkuserdir(){
-        window.parent.frames[2].postMessage('<?php echo $_SESSION["Uin"] ?>', 'http://hdfsm.qmcr.me:50070');
+        window.parent.frames["mkdir"].postMessage('<?php echo $_SESSION["Uin"] ?>', 'http://hdfsm.qmcr.me:50070');
       }
 
       function share(){
@@ -224,7 +224,7 @@ $.template( "fileTemplate", markup );
   $(tmpl).modal();
       }
       function calldelete(filepath){
-        window.parent.frames[1].postMessage(filepath, 'http://hdfsm.qmcr.me:50070'); 
+        window.parent.frames["del"].postMessage(filepath, 'http://hdfsm.qmcr.me:50070'); 
       }
       function create(){
           var tmpl = [
