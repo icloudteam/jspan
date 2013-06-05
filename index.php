@@ -18,8 +18,10 @@
 
 	if (isset($_POST['Uin'])) {
 
-
-		die(json_encode($_POST['Uin']));	
+        $_SESSION["Uin"]=$_POST['Uin'];
+        $_SESSION["NickName"]=$_POST['NickName'];
+        $_SESSION["UserName"]=$_POST['UserName'];
+		die(json_encode( $_SESSION["Uin"]));	
 	}
 
 
