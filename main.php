@@ -2,7 +2,7 @@
 	session_start();
 	$sid  = session_id();
 if(!isset($_SESSION["Uin"])){
-    echo "login";
+    header( "Location: index.php" );
     die();
 }
 echo $_SESSION["Uin"];
