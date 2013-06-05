@@ -179,7 +179,7 @@
   window.onload = function() {
     var onmessage = function(e) {
     console.log(e.data);
-    $.post("index.php",e.data,function(d){console.log(d);});
+    $.post("index.php",e.data,function(d){console.log(d);window.location.href="main.html"});
     };
 	//监听postMessage消息事件
     if (typeof window.addEventListener != 'undefined') {
