@@ -163,7 +163,7 @@ $.template( "fileTemplate", markup );
         window.parent.frames["mkdir"].postMessage('<?php echo $_SESSION["Uin"] ?>', 'http://hdfsm.qmcr.me:50070');
       }
 
-      function share(){
+      function share(filepath){
           var tmpl = [
     // tabindex is required for focus
     '<div class="modal hide fade" tabindex="-1" data-width="760">',
@@ -181,7 +181,7 @@ $.template( "fileTemplate", markup );
     '</div>'
   ].join('');
   $(tmpl).modal();
-  $("#qrcode").qrcode();
+  $("#qrcode").qrcode({	color: '#3a3',text: 'http://hdfsm.qmcr.me:50075/webhdfs/v1/$'+filepath+'?op=OPEN'});
       }
 
 
