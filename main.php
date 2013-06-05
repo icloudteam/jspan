@@ -159,8 +159,8 @@ $.template( "fileTemplate", markup );
         window.parent.frames["xhr"].postMessage("LISTSTATUS", 'http://hdfsm.qmcr.me:50070');
       }
 
-      function mkuserdir(){
-        window.parent.frames["mkdir"].postMessage('<?php echo $_SESSION["Uin"] ?>', 'http://hdfsm.qmcr.me:50070');
+      function mkuserdir(filepath){
+          window.parent.frames["mkdir"].postMessage(filepath, 'http://hdfsm.qmcr.me:50070');
       }
 
       function share(filepath){
@@ -172,7 +172,7 @@ $.template( "fileTemplate", markup );
         '<h3>分享文件</h3>',
       '</div>',
       '<div class="modal-body">',
-        '<h2>well well well!</h2>',
+    '<h2>http://hdfsm.qmcr.me:50075/webhdfs/v1/$',filepath,'?op=OPEN</h2>',
     '<div id="qrcode"></div>',
       '</div>',
       '<div class="modal-footer">',
@@ -181,7 +181,7 @@ $.template( "fileTemplate", markup );
     '</div>'
   ].join('');
   $(tmpl).modal();
-  $("#qrcode").qrcode({	color: '#3a3',text: 'http://hdfsm.qmcr.me:50075/webhdfs/v1/$'+filepath+'?op=OPEN'});
+  $("#qrcode").qrcode({	color: '#403D40',text: 'http://hdfsm.qmcr.me:50075/webhdfs/v1/$'+filepath+'?op=OPEN'});
       }
 
 
@@ -300,7 +300,8 @@ $.template( "fileTemplate", markup );
       });
   $.tmpl( "fileTemplate", files )
       .appendTo( "#filelist" );
-  $(".del").each(function(e,o){$(o).click(function(){ldelete($(o).attr('filepath'));});});
+      $(".del").each(function(e,o){$(o).click(function(){ldelete($(o).attr('filepath'));});});
+      $(".share").each(function(e,o){$(o).click(function(){share($(o).attr('filepath'));});});
   }
     };
 	//监听postMessage消息事件
