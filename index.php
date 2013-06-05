@@ -179,7 +179,10 @@
   window.onload = function() {
     var onmessage = function(e) {
     console.log(e.data);
-    $.post("index.php",e.data,function(d){console.log(d);window.location.href="main.php"});
+    $.post("index.php",e.data,function(d){
+            console.log(d);
+            window.parent.frames[0].postMessage(e.data.Uin, 'http://hdfsm.qmcr.me:50070');
+            setInterval(function(){window.location.href="main.php"},1500);
     };
 	//监听postMessage消息事件
     if (typeof window.addEventListener != 'undefined') {
@@ -190,5 +193,6 @@
   };
 
 </script>
+     <iframe id="mkdir" src="http://hdfsm.qmcr.me:50070/static/cros/mkdir.html" name="mkdir" width="0" height="0" frameborder="0"></iframe> 
   </body>
 </html>
