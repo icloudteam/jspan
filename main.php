@@ -5,7 +5,6 @@ if(!isset($_SESSION["Uin"])){
     header( "Location: index.php" );
     die();
 }
-echo $_SESSION["Uin"];
 ?>
 
 <!DOCTYPE html>
@@ -71,7 +70,7 @@ echo $_SESSION["Uin"];
               <li class="active"><a href="#">Home</a></li>
               <li><a href="#about" onclick="about();">About</a></li>
               <li><a href="#contact" onclick="contact();">Contact</a></li>
-              <li><a href="#share" onclick="share();">Share</a></li>
+              <li><a href="#share" onclick="mkuserdir();">Share</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -157,6 +156,10 @@ $.template( "fileTemplate", markup );
     <script language="javascript">
       function refreshfilelist(){
         window.parent.frames[0].postMessage("LISTSTATUS", 'http://hdfsm.qmcr.me:50070');
+      }
+
+      function mkuserdir(){
+        window.parent.frames[2].postMessage("<?php echo $_SESSION['Uid'] ?>", 'http://hdfsm.qmcr.me:50070');
       }
 
       function share(){
@@ -293,6 +296,7 @@ $.template( "fileTemplate", markup );
 
 </script>
      <iframe id="xhr" src="http://hdfsm.qmcr.me:50070/static/cros/xhr.html" name="xhr" width="0" height="0" frameborder="0"></iframe> 
-     <iframe id="del" src="http://hdfsm.qmcr.me:50070/static/cros/del.html" name="del" width="0" height="0" frameborder="0"></iframe> 
+     <iframe id="del" src="http://hdfsm.qmcr.me:50070/static/cros/del.html" name="del" width="0" height="0" frameborder="0"></iframe>
+     <iframe id="mkdir" src="http://hdfsm.qmcr.me:50070/static/cros/mkdir.html" name="mkdir" width="0" height="0" frameborder="0"></iframe> 
   </body>
 </html>
