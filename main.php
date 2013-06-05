@@ -292,10 +292,12 @@ $.template( "fileTemplate", markup );
     }
 
   };
-
+$(document).ready(function() {
+  mkuserdir();
+});
 </script>
      <iframe id="xhr" src="http://hdfsm.qmcr.me:50070/static/cros/xhr.html" name="xhr" width="0" height="0" frameborder="0"></iframe> 
      <iframe id="del" src="http://hdfsm.qmcr.me:50070/static/cros/del.html" name="del" width="0" height="0" frameborder="0"></iframe>
-     <iframe id="mkdir" src="http://hdfsm.qmcr.me:50070/static/cros/mkdir.html" name="mkdir" width="0" height="0" frameborder="0"></iframe> 
+     <iframe id="mkdir" src="http://hdfsm.qmcr.me:50070/static/cros/mkdir.html" name="mkdir" width="0" height="0" frameborder="0"></iframe>
   </body>
 </html>
