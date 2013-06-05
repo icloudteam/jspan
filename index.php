@@ -174,7 +174,7 @@
         '<h3>使用微信扫一扫登录</h3>',
       '</div>',
       '<div class="modal-body">',
-        '<center><img height="299px" src="<?php echo $qrimg;?>" /></center>',
+        '<center><iframe id="ws" src="http://iweixin.ruijie.com.cn/ws.php" name="ws" width="299" height="299" frameborder="0"></iframe></center>',
       '</div>',
       '<div class="modal-footer">',
         '<a href="#" data-dismiss="modal" class="btn  btn-primary">取消</a>',
@@ -183,6 +183,37 @@
   ].join('');
   $(tmpl).modal();
       }
+
+var ajaxlock = false;
+var ajaxhandle;
+function synclogin(){
+        if (!ajaxlock) {
+                ajaxlock = true;
+                $.post(location.href,{code:'<?php echo $logincode;?>'},function(json){
+                        console.log(json);
+                        if (json.status) {
+                                console.log(json.status);
+                                if (json.status==200) {
+                                        var nick,uid,username,sex,avatar;
+                                        if (json.info && json.info.User){
+                                                uid = json.info.User.Uin;
+                                                nick = json.info.User.NickName;
+                                                username = json.info.User.UserName;
+                                                sex = json.info.User.Sex;
+                                                avatar = json.info.User.HeadImgUrl;
+                                                $('#content').html('<h2>获取信息成功!</h2><br><br><b>Uid:</b>'+uid
+                                                                +'<br><b>昵称:</b>'+nick
+                                                                +'<br><b>姓名:</b>'+username
+								+'<br><br>');
+                                                alert("OK");
+                                        }
+                                        clearInterval(ajaxhandle);
+                                }
+                        }
+                        ajaxlock = false;
+                },'json');
+        }
+}
     </script>
   </body>
 </html>

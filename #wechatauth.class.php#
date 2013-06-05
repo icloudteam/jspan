@@ -139,8 +139,8 @@ class Wechatauth
 							$ticket = $matches[1];
 							$scan = $matches[2];
 							$loginurl = 'https://wx.qq.com/cgi-bin/mmwebwx-bin/webwxnewloginpage?ticket='.$ticket.'&lang=zh_CN&scan='.$scan.'&fun=new';
-							$send_snoopy = new Snoopy; 
-							$send_snoopy->referer = "https://wx.qq.com/";
+							//$send_snoopy = new Snoopy; 
+							//$send_snoopy->referer = "https://wx.qq.com/";
 							$send_snoopy->fetch($loginurl);
 							$this->log('step3:'.print_r($send_snoopy->headers,true));
 							foreach ($send_snoopy->headers as $key => $value) {
