@@ -6,7 +6,6 @@ if(!isset($_SESSION["Uin"])){
     die();
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -159,7 +158,7 @@ $.template( "fileTemplate", markup );
       }
 
       function mkuserdir(){
-        window.parent.frames[2].postMessage("<?php echo $_SESSION['Uid'] ?>", 'http://hdfsm.qmcr.me:50070');
+        window.parent.frames[2].postMessage('<?php echo $_SESSION["Uin"] ?>', 'http://hdfsm.qmcr.me:50070');
       }
 
       function share(){
