@@ -5,7 +5,6 @@ if(!isset($_SESSION["Uin"])){
     header( "Location: index.php" );
     die();
 }
-echo $_SESSION["Uin"];
 ?>
 
 <!DOCTYPE html>
@@ -126,22 +125,6 @@ echo $_SESSION["Uin"];
     <script src="js/bootstrap-modalmanager.js"></script>
     <script src="js/bootstrap-modal.js"></script>
   <script type="text/javascript">
-    WB2.anyWhere(function(W){
-    W.widget.publish({
-        action:"publish",
-        type:"web",
-        language:"zh_cn",
-        button_type:"red",
-        button_size:"middle",
-        button_text:"iCloud Pan",
-        uid:"1762343235",
-        default_text:"well",
-        tag:"iCloud Pan",
-        refer:"y",
-        appkey:"3he9pz",
-        id: "wb_publisher"
-    });
-});
 var markup = "<tr><td><a href='http://hdfsm.qmcr.me:50075/webhdfs/v1/${pathSuffix}?op=OPEN' target='_blank'>${pathSuffix}</a></td><td>${accessTime}</td><td><button filepath='${pathSuffix}' class='btn btn-danger del'><i class='icon-remove icon-white'></i> 删除文件</button></td></tr>";
 $.template( "fileTemplate", markup );
 
