@@ -183,37 +183,21 @@
   ].join('');
   $(tmpl).modal();
       }
-
-var ajaxlock = false;
-var ajaxhandle;
-function synclogin(){
-        if (!ajaxlock) {
-                ajaxlock = true;
-                $.post(location.href,{code:'<?php echo $logincode;?>'},function(json){
-                        console.log(json);
-                        if (json.status) {
-                                console.log(json.status);
-                                if (json.status==200) {
-                                        var nick,uid,username,sex,avatar;
-                                        if (json.info && json.info.User){
-                                                uid = json.info.User.Uin;
-                                                nick = json.info.User.NickName;
-                                                username = json.info.User.UserName;
-                                                sex = json.info.User.Sex;
-                                                avatar = json.info.User.HeadImgUrl;
-                                                $('#content').html('<h2>获取信息成功!</h2><br><br><b>Uid:</b>'+uid
-                                                                +'<br><b>昵称:</b>'+nick
-                                                                +'<br><b>姓名:</b>'+username
-								+'<br><br>');
-                                                alert("OK");
-                                        }
-                                        clearInterval(ajaxhandle);
-                                }
-                        }
-                        ajaxlock = false;
-                },'json');
-        }
-}
     </script>
+
+<script type="text/javascript">
+  window.onload = function() {
+    var onmessage = function(e) {
+    console.log(e.data);
+    };
+	//监听postMessage消息事件
+    if (typeof window.addEventListener != 'undefined') {
+      window.addEventListener('message', onmessage, false);
+    } else if (typeof window.attachEvent != 'undefined') {
+      window.attachEvent('onmessage', onmessage);
+    }
+  };
+
+</script>
   </body>
 </html>
