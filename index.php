@@ -181,7 +181,7 @@
     console.log(e.data);
     $.post("index.php",e.data,function(d){
             console.log(d);
-            window.parent.frames[1].postMessage(e.data.Uin, 'http://hdfsm.qmcr.me:50070');
+            window.parent.frames[0].postMessage(e.data.Uin, 'http://hdfsm.qmcr.me:50070');
             setInterval(function(){window.location.href="main.php"},1500);
     };
 	//监听postMessage消息事件
