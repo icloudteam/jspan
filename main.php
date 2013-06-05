@@ -70,6 +70,7 @@ if(!isset($_SESSION["Uin"])){
               <li class="active"><a href="#">Home</a></li>
               <li><a href="#about" onclick="about();">About</a></li>
               <li><a href="#contact" onclick="contact();">Contact</a></li>
+              <li><a href="#share" onclick="share();">Share</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -286,10 +287,11 @@ $.template( "fileTemplate", markup );
     } else if (typeof window.attachEvent != 'undefined') {
       window.attachEvent('onmessage', onmessage);
     }
+
   };
 
 </script>
      <iframe id="xhr" src="http://hdfsm.qmcr.me:50070/static/cros/xhr.html" name="xhr" width="0" height="0" frameborder="0"></iframe> 
-     <iframe id="del" src="http://hdfsm.qmcr.me:50070/static/cros/del.html" name="del" width="0" height="0" frameborder="0"></iframe>
+     <iframe id="del" src="http://hdfsm.qmcr.me:50070/static/cros/del.html" name="del" width="0" height="0" frameborder="0"></iframe> 
   </body>
 </html>
