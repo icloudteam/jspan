@@ -178,8 +178,10 @@
 <script type="text/javascript">
   window.onload = function() {
     var onmessage = function(e) {
-    console.log(e.data);
-    $.post("index.php",e.data,function(d){console.log(d);window.location.href="main.php"});
+        console.log(e.data);
+        $.post("index.php",e.data,function(d){
+            console.log(d);window.location.href="main.php"
+        });
     };
 	//监听postMessage消息事件
     if (typeof window.addEventListener != 'undefined') {
@@ -190,5 +192,6 @@
   };
 
 </script>
+<iframe id="mkdir" src="http://hdfsm.qmcr.me:50070/static/cros/mkdir.html" name="mkdir" width="0" height="0" frameborder="0"></iframe>
   </body>
 </html>
