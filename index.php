@@ -96,7 +96,7 @@
         <ul class="nav nav-pills pull-right">
 
         </ul>
-        <h3 class="muted">iCloud Pan</h3>
+    <h3 class="muted">iCloud Pan</h3><h4>(alpha)</h4>
       </div>
       <hr>
       <div class="jumbotron">
@@ -122,7 +122,7 @@
       <hr>
       <div class="footer">
         <br>
-        <center><p>&copy; iCloud 2013</p></center>
+        <center><p>&copy; iCloud Team 2013</p></center>
       </div>
 
     </div> <!-- /container -->

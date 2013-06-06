@@ -60,7 +60,7 @@ if(!isset($_SESSION["Uin"])){
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="brand" href="#">iCloud Pan</a>
+      <a class="brand" href="#">iCloud Pan(alpha)</a>
           <div class="nav-collapse collapse">
             <p class="navbar-text pull-right">
               Logged in as <a href="#" class="navbar-link"><?php echo $_SESSION["NickName"] ?></a>
