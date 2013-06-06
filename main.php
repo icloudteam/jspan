@@ -206,12 +206,12 @@ $.template( "fileTemplate", markup );
       function contact(){
           var tmpl = [
     // tabindex is required for focus
-    '<div class="modal hide fade" tabindex="-1" data-width="760">',
+    '<div class="modal hide fade" tabindex="-1" data-width="480">',
       '<div class="modal-header">',
         '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>',
         '<h3>Contact</h3>',
       '</div>',
-      '<div class="modal-body">',
+      '<div class="modal-body"><center>',
         '<h4><a href="http://weibo.com/u/206161800" target="_BLANK">申健</a></h4>',
         '<h4><a href="http://weibo.com/2188332174" target="_BLANK">孙晓宁</a></h4>',
         '<h4><a href="http://weibo.com/u/1867431461" target="_BLANK">关永翔</a></h4>',
@@ -219,7 +219,7 @@ $.template( "fileTemplate", markup );
         '<h4><a href="http://weibo.com/207123093" target="_BLANK">侯晓辰</a></h4>',
         '<h4><a href="http://weibo.com/u/1664171265" target="_BLANK">吴芳</a></h4>',
         '<h4><a href="http://user.qzone.qq.com/138265383?ptlang=2052" target="_BLANK">周腾宇</a></h4>',
-      '</div>',
+      '</center></div>',
       '<div class="modal-footer">',
         '<a href="#" data-dismiss="modal" class="btn  btn-primary">确定</a>',
       '</div>',
