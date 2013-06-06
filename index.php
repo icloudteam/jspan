@@ -102,7 +102,7 @@
       <div class="jumbotron">
         <h1>爱云网盘!<br>iCloud Pan!<br>Super awesome!</h1>
         <p class="lead">产品不是一个人的战役，即使是天才的乔布斯，他也需要一个团队。只有最好的团队才能做好顶级的产品。iCloud团队，你值得信赖的团队！</p>
-        <a class="btn btn-large btn-success" href="#" onclick="about();">立即使用</a>
+        <a class="btn btn-large btn-success" href="#" onclick="about();">免费使用</a>
       </div>
       <hr>
       <div class="span9">
