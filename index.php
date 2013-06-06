@@ -96,7 +96,7 @@
         <ul class="nav nav-pills pull-right">
 
         </ul>
-    <h3 class="muted">iCloud Pan</h3><h4>(alpha)</h4>
+    <h3 class="muted">iCloud Pan</h3>
       </div>
       <hr>
       <div class="jumbotron">
